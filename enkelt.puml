@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Healtcare Professional: as Admin#blue;line:blue;line.bold
+rectangle NemGraviditet {
+(Registration of patient) as (Use)
+}
+
+
+
+Admin -right--> (Use)#blue;line:blue;line.bold
+
+
+
+
+@enduml

@@ -1,0 +1,92 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class User {
+Firstname: string
+Lastname: string
+User-ID: int
+
+{method} Check_login
+}
+Healthcare_worker -up-|> User
+class Healthcare_worker {
+Profession: string
+Department: string
+Work_type: string
+ManagerID: int
+Manager_name: string
+
+{method} Register_patient
+{method} Upload_data
+{method} Book_consultation
+{method} Check_data
+{method} Change_data
+{method} Send_message
+{method} Receive_message
+{method} Check_calender
+}
+class Patient {
+Address: string
+Assigned healthcare worker: string
+Weight: float
+Height: float
+Birtdate: int
+Marital_status: string
+{method} Book_consultation
+{method} Check_data
+{method} Send_message
+{method} Receive_message
+{method} Check_calender
+}
+Patient -up-|> User
+class GP_secretary {
+Department: string
+ManagerID: int
+Manager_name: string
+Work_type: string
+{method} Book_consultation
+{method} Check_calender
+{method} Check_data
+}
+
+
+GP_secretary -up-|> User
+interface Interface {
+
+{method} Ui_MenuWindow
+MainWindow()
+{method}Ui_RegisterWindow
+{method} Ui_LoginWindow
+}
+Interface "1"-down-"1..*" User :contains
+
+
+
+
+
+class "IT-employee" {
+Work_type: string
+ManagerID: int
+Manager_name: string
+}
+"IT-employee" -up-|> User
+
+class "Diagnostic Tests" {
+HCG: float
+AB0:string
+RhD: string
+HIV: string
+Hepatitis_B: string
+Syphilis: string
+Ultrasound scan: binary
+Doppler Ultrasound: binary
+MRI: binary
+
+{method} Check_results
+}
+
+"Diagnostic Tests" "1"--"1..*" "Patient"
+"Diagnostic Tests" "1"--"1..*" "Healthcare_worker"
+"Interface" "1" -down- "1..*" "Diagnostic Tests"
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+skinparam packageStyle rectangle
+actor :Primary user of system: as pbas #limegreen;line:limegreen;line.bold
+actor :Healthcare Professional: as sp #blue;line:blue;line.bold
+actor :Patient: as p #pink;line:pink;line.bold
+actor :GP_Secretary: as l #purple;line:purple;line.bold
+actor :IT-Employee: as it #yellow;line:yellow;line.bold
+
+rectangle NemGraviditet {
+usecase (Enter/change data)
+usecase (Administration of calender)
+usecase (Book consultation)
+usecase (Look up information)
+usecase (Registration of patient)
+usecase (Digital patient overview)
+usecase (Maintenance)
+pbas -- (Look up information) #limegreen;line.bold
+pbas -- (Book consultation) #limegreen;line.bold
+sp -- (Enter/change data) #blue;line.bold
+sp -- (Registration of patient) #blue;line.bold
+p -- (Digital patient overview) #line:pink;line.bold
+(Maintenance) -- it #yellow;line.bold
+(Administration of calender) -- l #purple;line.bold
+}
+pbas <-up- sp #line:blue;line.bold
+pbas <-up- p #line:pink;line.bold
+pbas <-up- l #purple;line:purple;line.bold
+(Registration of patient) .> (Enter/change data) : include
+(Book consultation) .> (Enter/change data) : include
+(Registration of patient) .> (Book consultation) : include
+@enduml
