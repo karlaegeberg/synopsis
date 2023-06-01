@@ -85,8 +85,8 @@ MRI: binary
 {method} Check_results
 }
 
-"Diagnostic Tests" "1"--"1..*" "Patient"
-"Diagnostic Tests" "1"--"1..*" "Healthcare_worker"
+"Diagnostic Tests" "0..*"--"1" "Patient"
+"Diagnostic Tests" "0..*"--"1..*" "Healthcare_worker"
 "Interface" "1" -down- "1..*" "Diagnostic Tests"
 
 @enduml
